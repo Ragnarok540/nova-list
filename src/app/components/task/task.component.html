@@ -1,0 +1,111 @@
+<form>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea type="text" class="form-control" id="description" placeholder="Description"></textarea>
+  </div>
+
+
+
+<div class="form-row">
+
+<div class="form-group col-sm-3">
+
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" checked>
+  <label class="form-check-label" for="noUrgent">
+    This task is NOT urgent
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1">
+  <label class="form-check-label" for="YesUrgent">
+    This task IS urgent
+  </label>
+</div>
+
+<br>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="important" id="noImportant" value="0" checked>
+  <label class="form-check-label" for="noImportant">
+    This task is NOT important
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="important" id="yesImportant" value="1">
+  <label class="form-check-label" for="yesImportant">
+    This task IS important
+  </label>
+</div>
+
+
+
+
+</div>
+
+<div class="form-group col-sm-9">
+
+<div class="card card-body bg-light">
+<p><b>Urgent:</b> Requiring immediate attention. (Crises, problems, interruptions, meetings, calls, emails...)</p>
+<p><b>Important:</b> Having relevant and crucial value. (Crises, problems, planning, study, excercise, recreation...)</p>
+ 
+</div>
+
+</div>
+
+
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group col-sm">
+  <label for="date">Deadline Date</label>
+
+    <input class="form-control" type="date" id="date">
+
+</div>
+
+<div class="form-group col-sm">
+  <label for="time">Deadline Time</label>
+
+    <input class="form-control" type="time" id="time">
+
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group col-sm">
+<button type="submit" class="btn btn-outline-dark btn-block">Add Task</button>
+</div>
+
+<div class="form-group col-sm">
+<button type="submit" class="btn btn-outline-dark btn-block">Change State</button>
+</div>
+
+<div class="form-group col-sm">
+<button type="submit" class="btn btn-outline-dark btn-block">Update Task</button>
+</div>
+
+<div class="form-group col-sm">
+<button type="submit" class="btn btn-outline-dark btn-block">Delete Task</button>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+</form>
