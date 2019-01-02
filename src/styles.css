@@ -32,3 +32,7 @@
 .fadeIn {
   animation-name: fadeIn;
 }
+
+body {
+  padding-top: 50px;
+}

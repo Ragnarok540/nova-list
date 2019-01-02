@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BoardService, Task } from '../../services/board.service';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  pendingTasks:Task[] = [];
+
+  constructor( private boardService:BoardService,
+               private router:Router ) { }
 
   ngOnInit() {
+    this.pendingTasks = this.boardService.getPendingTasks();
+  }
+
+  seeTask( code:number ) {
+    this.router.navigate( ['/task', code] );
   }
 
 }

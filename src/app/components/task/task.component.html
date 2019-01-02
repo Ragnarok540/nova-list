@@ -1,54 +1,59 @@
-<form>
+<form class="fadeIn fast pb-5">
   <div class="form-group">
-    <label for="name">Name</label>
+    <label for="name"><h5>Name</h5></label>
     <input type="text" class="form-control" id="name" placeholder="Name">
   </div>
   <div class="form-group">
-    <label for="description">Description</label>
+    <label for="description"><h5>Description</h5></label>
     <textarea type="text" class="form-control" id="description" placeholder="Description"></textarea>
   </div>
+<h5>Priority</h5>
+<div class="container-fluid border rounded p-2">
 
 
 
 <div class="form-row">
 
-<div class="form-group col-sm-3">
+<div class="form-group col-sm-4">
 
+<br>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" checked>
   <label class="form-check-label" for="noUrgent">
-    This task is NOT urgent
+    This task is NOT urgent (+0)
   </label>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1">
   <label class="form-check-label" for="YesUrgent">
-    This task IS urgent
+    This task IS urgent (+1)
   </label>
 </div>
 
-<br>
+<hr>
 
 <div class="form-check">
   <input class="form-check-input" type="radio" name="important" id="noImportant" value="0" checked>
   <label class="form-check-label" for="noImportant">
-    This task is NOT important
+    This task is NOT important (+0)
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="important" id="yesImportant" value="1">
+  <input class="form-check-input" type="radio" name="important" id="yesImportant" value="2">
   <label class="form-check-label" for="yesImportant">
-    This task IS important
+    This task IS important (+2)
   </label>
 </div>
 
-
-
-
 </div>
 
-<div class="form-group col-sm-9">
+
+
+
+
+
+<div class="form-group col-sm-8">
 
 <div class="card card-body bg-light">
 <p><b>Urgent:</b> Requiring immediate attention. (Crises, problems, interruptions, meetings, calls, emails...)</p>
@@ -58,21 +63,22 @@
 
 </div>
 
+</div> </div>
 
 
-</div>
 
-<div class="form-row">
+
+<div class="form-row p-2">
 
 <div class="form-group col-sm">
-  <label for="date">Deadline Date</label>
+  <label for="date"><h5>Deadline Date</h5></label>
 
     <input class="form-control" type="date" id="date">
 
 </div>
 
 <div class="form-group col-sm">
-  <label for="time">Deadline Time</label>
+  <label for="time"><h5>Deadline Time</h5></label>
 
     <input class="form-control" type="time" id="time">
 
@@ -99,13 +105,7 @@
 </div>
 
 
-
 </div>
-
-
-
-
-
 
 
 </form>

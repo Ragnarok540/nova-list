@@ -4,17 +4,24 @@
 
     <h4>Pending</h4>
 
-	  <div class="list-group">
-	  <a href="#" class="list-group-item list-group-item-action active">
+	  <ul class="list-group">
+	  <li class="list-group-item list-group-item-action" *ngFor="let task of pendingTasks" >
 		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small>3 days ago</small>
+		  <h5 class="mb-1">{{task.name}}</h5>
+		  <small>{{task.deadlineDate}} {{task.deadlineTime}}</small>
 		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small>Donec id elit non mi porta.</small>
-	  </a> 
-    </div>
+		<p class="mb-1">{{task.desc}}</p>
+		<small>Priority {{task.urgent + task.important}}</small>
+
+        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        Edit
+        </button>
+
+	  </li> 
+    </ul>
+
 	</div>
+
 	<div class="col-sm fadeIn fast">
 
     <h4>In Progress</h4>

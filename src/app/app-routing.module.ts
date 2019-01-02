@@ -10,6 +10,7 @@ const ROUTES: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'board', component: BoardComponent},
   {path: 'task', component: TaskComponent},
+  {path: 'task/:code', component: TaskComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

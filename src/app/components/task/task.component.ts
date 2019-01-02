@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BoardService, Task } from '../../services/board.service';
 
 @Component({
   selector: 'app-task',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  constructor() { }
+  task:Task = {};
+
+  constructor( private activatedRoute:ActivatedRoute,
+               private boardService:BoardService ) {
+    this.activatedRoute.params.subscribe( params => {
+      console.log( params['code'] );
+      this.task = this.boardService.getTask( params['code'] );
+      console.log(this.task);
+    })
+
+  }
 
   ngOnInit() {
   }
