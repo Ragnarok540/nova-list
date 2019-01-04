@@ -11,7 +11,7 @@
 		  <small>{{task.deadlineDate}} {{task.deadlineTime}}</small>
 		</div>
 		<p class="mb-1">{{task.desc}}</p>
-		<small>Priority {{task.urgent + task.important}}</small>
+		<small>Priority {{ task.urgent + task.important }}</small>
 
         <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
         Edit

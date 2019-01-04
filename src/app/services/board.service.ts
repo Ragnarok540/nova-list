@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class BoardService {
 		name: "Levantarse",
 		desc: "Levantarse de la cama.",
 		deadlineDate: "2019-01-05",
-		deadlineTime: "06:00"
-		urgent: 1,
-		important: 2,
+		deadlineTime: "06:00",
+		urgent: "1",
+		important: "2",
 		state: 0
 	  },
 
@@ -22,9 +23,9 @@ export class BoardService {
 		name: "Hacer Café",
 		desc: "Hacer el café con leche.",
 		deadlineDate: "2019-01-05",
-		deadlineTime: "07:00"
-		urgent: 1,
-		important: 2,
+		deadlineTime: "07:00",
+		urgent: "1",
+		important: "2",
 		state: 0
 	  }
   ];
@@ -37,19 +38,9 @@ export class BoardService {
     return this.pendingTasks;
   }
 
-  public getTask( code:number ):Task{
-    return this.pendingTasks.filter( function(task){return (task.code == code );}  );
+  public getTask( code:number ):Task {
+    return this.pendingTasks.filter( function(task){return (task.code == code );}  )[0];
   }
 
-}
 
-export interface Task {
-  code: number,
-  name: string,
-  desc: string,
-  deadlineDate: string,
-  deadlineTime; string,
-  urgent: number,
-  important: number,
-  state: number
-};
+}

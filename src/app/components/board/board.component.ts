@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BoardService, Task } from '../../services/board.service';
+import { BoardService } from '../../services/board.service';
+import { Task } from '../../interfaces/task';
 
 @Component({
   selector: 'app-board',
