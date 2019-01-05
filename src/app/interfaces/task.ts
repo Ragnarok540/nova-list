@@ -1,10 +1,10 @@
 export interface Task {
   code: number,
   name: string,
-  desc: string,
-  deadlineDate: string,
-  deadlineTime: string,
+  description: string,
+  deadline_date: string,
+  deadline_time: string,
   urgent: string,
   important: string,
-  state: number
+  task_state: number
 }

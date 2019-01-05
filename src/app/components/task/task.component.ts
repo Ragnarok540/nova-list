@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-// import { BoardService } from '../../services/board.service';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
 
@@ -15,36 +14,26 @@ export class TaskComponent implements OnInit {
   task:Task = { 
 	  code: null,
 	  name: null,
-	  desc: null,
-	  deadlineDate: null,
-	  deadlineTime: null,
+	  description: null,
+	  deadline_date: null,
+	  deadline_time: null,
 	  urgent: null,
 	  important: null,
-	  state: null
+	  task_state: null
   }
 
-  constructor( private activatedRoute:ActivatedRoute,
-               private router:Router,
-             //private boardService:BoardService,
-               private taskService:TaskService ) {
-/*
-    this.activatedRoute.params.subscribe( params => {
-      console.log( params['code'] );
-      this.task = this.boardService.getTask( params['code'] );
-      console.log(this.task);
-    })
-*/
-  }
+  constructor( private router:Router,
+               private taskService:TaskService ) { }
 
   ngOnInit() { }
 
-  save( forma:NgForm ) {
-    console.log("Formulario posteado");
-    console.log(forma.value);
-    this.taskService.newTask( forma.value as Task ).subscribe( taskO => {
+  save( form:NgForm ) {
+
+    this.taskService.newTask( form.value as Task ).subscribe( taskO => {
       console.log(taskO);
       this.router.navigate(['/board']);
     });
+
   }
 
 }

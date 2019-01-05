@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../interfaces/task';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class TaskService {
 
   constructor( private http:HttpClient ) { }
 
-  newTask( task:Task ) : Observable<Task> {
+  public newTask( task:Task ) : Observable<Task> {
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,9 +22,9 @@ export class TaskService {
     let arr:string[] = [];
 
     arr.push(task.name);
-    arr.push(task.desc);
-    arr.push(task.deadlineDate);
-    arr.push(task.deadlineTime);
+    arr.push(task.description);
+    arr.push(task.deadline_date);
+    arr.push(task.deadline_time);
     arr.push(task.urgent);
     arr.push(task.important);
     arr.push("0");

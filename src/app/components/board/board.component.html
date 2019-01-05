@@ -8,13 +8,13 @@
 	  <li class="list-group-item list-group-item-action" *ngFor="let task of pendingTasks" >
 		<div class="d-flex w-100 justify-content-between">
 		  <h5 class="mb-1">{{task.name}}</h5>
-		  <small>{{task.deadlineDate}} {{task.deadlineTime}}</small>
+		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
 		</div>
-		<p class="mb-1">{{task.desc}}</p>
+		<p class="mb-1">{{task.description}}</p>
 		<small>Priority {{ task.urgent + task.important }}</small>
 
         <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
-        Edit
+        Details
         </button>
 
 	  </li> 
@@ -25,55 +25,45 @@
 	<div class="col-sm fadeIn fast">
 
     <h4>In Progress</h4>
-	  <div class="list-group">
-	  <a href="#" class="list-group-item list-group-item-action active">
+
+	  <ul class="list-group">
+	  <li class="list-group-item list-group-item-action" *ngFor="let task of inProgressTasks" >
 		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small>3 days ago</small>
+		  <h5 class="mb-1">{{task.name}}</h5>
+		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
 		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small>Donec id elit non mi porta.</small>
-	  </a> 
-	  <a href="#" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small class="text-muted">3 days ago</small>
-		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small class="text-muted">Donec id elit non mi porta.</small>
-	  </a> 
-	  <a href="#" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small class="text-muted">3 days ago</small>
-		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small class="text-muted">Donec id elit non mi porta.</small>
-	  </a>
-    </div>
+		<p class="mb-1">{{task.description}}</p>
+		<small>Priority {{ task.urgent + task.important }}</small>
+
+        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        Details
+        </button>
+
+	  </li> 
+    </ul>
+
 	</div>
+
 	<div class="col-sm fadeIn animated">
 
     <h4>Done</h4>
-	  <div class="list-group">
-	  <a href="#" class="list-group-item list-group-item-action active">
-		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small>3 days ago</small>
-		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small>Donec id elit non mi porta.</small>
-	  </a> 
-	  <a href="#" class="list-group-item list-group-item-action">
-		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">List group item heading</h5>
-		  <small class="text-muted">3 days ago</small>
-		</div>
-		<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		<small class="text-muted">Donec id elit non mi porta.</small>
-	  </a> 
 
-    </div>
+	  <ul class="list-group">
+	  <li class="list-group-item list-group-item-action" *ngFor="let task of doneTasks" >
+		<div class="d-flex w-100 justify-content-between">
+		  <h5 class="mb-1">{{task.name}}</h5>
+		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
+		</div>
+		<p class="mb-1">{{task.description}}</p>
+		<small>Priority {{ task.urgent + task.important }}</small>
+
+        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        Details
+        </button>
+
+	  </li> 
+    </ul>
+
 	</div>
   </div>
 </div>

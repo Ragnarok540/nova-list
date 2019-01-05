@@ -12,15 +12,31 @@ export class BoardComponent implements OnInit {
 
   pendingTasks:Task[] = [];
 
+  inProgressTasks:Task[] = [];
+
+  doneTasks:Task[] = [];
+
   constructor( private boardService:BoardService,
                private router:Router ) { }
 
   ngOnInit() {
-    this.pendingTasks = this.boardService.getPendingTasks();
+
+    this.boardService.getPendingTasks().subscribe( tasks => {
+      this.pendingTasks = tasks;
+    });
+
+    this.boardService.getInProgressTasks().subscribe( tasks => {
+      this.inProgressTasks = tasks;
+    });
+
+    this.boardService.getDoneTasks().subscribe( tasks => {
+      this.doneTasks = tasks;
+    });
+
   }
 
   seeTask( code:number ) {
-    this.router.navigate( ['/task', code] );
+    this.router.navigate( ['/task-detail', code] );
   }
 
 }

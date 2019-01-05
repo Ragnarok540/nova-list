@@ -1,3 +1,23 @@
-<p>
-  task-detail works!
-</p>
+<div class="jumbotron fadeIn fast">
+  <h1 class="display-4">{{ task.name }}</h1>
+  <p class="lead">{{ task.description }}</p>
+  <hr class="my-4">
+  <p>{{ task.deadline_date }} - {{ task.deadline_time }}</p>
+  <hr class="my-4">
+  <p>{{ task.urgent }} - {{ task.important }}</p>
+
+  <div class="row">
+
+    <div class="col-sm">
+      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button">Change State</button>
+    </div>
+    <div class="col-sm">
+      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Edit Task</button>
+    </div>
+    <div class="col-sm">
+      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Delete Task</button>
+    </div>
+
+  </div>
+
+</div>
