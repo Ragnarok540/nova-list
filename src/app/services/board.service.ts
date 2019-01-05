@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../interfaces/task';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
+
+  taskURL:string = "http://localhost:8000/api/board";
 
   private pendingTasks:Task[] = [
       {
@@ -30,7 +35,7 @@ export class BoardService {
 	  }
   ];
 
-  constructor() { 
+  constructor( private http:HttpClient ) { 
     console.log("Servicio Board listo para usarse.");
   }
 
