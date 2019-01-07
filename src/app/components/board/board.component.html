@@ -11,7 +11,7 @@
 		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
 		</div>
 		<p class="mb-1">{{task.description}}</p>
-		<small>Priority {{ task.urgent + task.important }}</small>
+		<small>Priority {{ getPriority(task) }}</small>
 
         <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
         Details
@@ -33,7 +33,7 @@
 		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
 		</div>
 		<p class="mb-1">{{task.description}}</p>
-		<small>Priority {{ task.urgent + task.important }}</small>
+		<small>Priority {{ getPriority(task) }}</small>
 
         <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
         Details
@@ -55,7 +55,7 @@
 		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
 		</div>
 		<p class="mb-1">{{task.description}}</p>
-		<small>Priority {{ task.urgent + task.important }}</small>
+		<small>Priority {{ getPriority(task) }}</small>
 
         <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
         Details

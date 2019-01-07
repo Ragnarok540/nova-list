@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TaskDetailService } from '../../services/task-detail.service';
 import { Task } from '../../interfaces/task';
+import { Urgency } from '../../enums/urgency.enum';
+import { Importance } from '../../enums/importance.enum';
+import { TaskState } from '../../enums/task-state.enum';
 
 @Component({
   selector: 'app-task-detail',
@@ -21,7 +24,12 @@ export class TaskDetailComponent implements OnInit {
 	task_state: null
   }
 
+  showPending:boolean = false;
+  showInProgress:boolean = false;
+  showDone:boolean = false;
+
   constructor( private activatedRoute:ActivatedRoute,
+               private router:Router,
                private taskDetailService:TaskDetailService ) { }
 
   ngOnInit() {
@@ -31,9 +39,37 @@ export class TaskDetailComponent implements OnInit {
       this.taskDetailService.getTask( params['code'] ).subscribe( taskO => {
 
         this.task = taskO;
+
+        switch (this.task.task_state) {
+          case 0:
+            this.showInProgress = true;
+            this.showDone = true;
+            break;
+          case 1:
+            this.showPending = true;
+            this.showDone = true;
+            break;
+          case 2:
+            this.showPending = true;
+            this.showInProgress = true;
+            break;
+        }
         
       });
 
+    });
+
+  }
+
+  getPriority() : number {
+    return parseInt(this.task.urgent) + parseInt(this.task.important);
+  }
+
+  changeState( code:number , task_state:number ) {
+
+    this.taskDetailService.changeState( code, task_state ).subscribe( taskO => {
+      console.log(taskO);
+      this.router.navigate(['/board']);
     });
 
   }

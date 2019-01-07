@@ -22,6 +22,9 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
 
     this.boardService.getPendingTasks().subscribe( tasks => {
+
+      //tasks.sort(function(a, b){return (a.urgent + a.important) - (b.urgent + b.important)});
+ 
       this.pendingTasks = tasks;
     });
 
@@ -37,6 +40,10 @@ export class BoardComponent implements OnInit {
 
   seeTask( code:number ) {
     this.router.navigate( ['/task-detail', code] );
+  }
+
+  getPriority( task:Task ) : number {
+    return parseInt(task.urgent) + parseInt(task.important);
   }
 
 }

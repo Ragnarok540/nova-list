@@ -1,15 +1,18 @@
 <div class="jumbotron fadeIn fast">
-  <h1 class="display-4">{{ task.name }}</h1>
-  <p class="lead">{{ task.description }}</p>
+  <h1 class="display-4"><b>Name:</b> {{ task.name }}</h1>
   <hr class="my-4">
-  <p>{{ task.deadline_date }} - {{ task.deadline_time }}</p>
+  <h1 class="lead"><b>Description:</b> {{ task.description }}</h1>
   <hr class="my-4">
-  <p>{{ task.urgent }} - {{ task.important }}</p>
-
+  <p class="lead"><b>Deadline Date & Time:</b> {{ task.deadline_date }} {{ task.deadline_time }}</p>
+  <hr class="my-4">
+  <p class="lead"><b>Priority:</b> {{ getPriority() }}</p>
+  <hr class="my-4">
+  <p class="lead"><b>State:</b> {{ task.task_state }}</p>
+  <hr class="my-4">
   <div class="row">
 
     <div class="col-sm">
-      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button">Change State</button>
+      <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal" role="button">Change State</button>
     </div>
     <div class="col-sm">
       <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Edit Task</button>
@@ -20,4 +23,27 @@
 
   </div>
 
+</div>
+
+<!-- State Change Modal -->
+<div class="modal fade" id="changeStateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change State</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please select the state of this task.
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="showPending" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 0)">Pending</button>
+        <button *ngIf="showInProgress" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 1)">In Progress</button>
+        <button *ngIf="showDone" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 2)">Done</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
