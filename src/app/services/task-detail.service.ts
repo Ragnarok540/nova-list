@@ -9,12 +9,12 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class TaskDetailService {
 
-  taskDetailURL:string = "http://localhost:8000/api/task-detail";
+  taskDetailURL:string = "http://localhost:8000/api/task-detail/";
 
   constructor( private http:HttpClient ) { }
 
   public getTask( code:number ): Observable<Task> {
-    return this.http.get<Task>(this.taskDetailURL + '/' + code);
+    return this.http.get<Task>(this.taskDetailURL + code);
   }
 
   public changeState( code:number , task_state:number ) : Observable<Task> {

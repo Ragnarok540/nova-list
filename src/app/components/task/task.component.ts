@@ -27,7 +27,7 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() { }
 
-  save( form:NgForm ) {
+  newTask( form:NgForm ) {
 
     this.taskService.newTask( form.value as Task ).subscribe( taskO => {
       console.log(taskO);

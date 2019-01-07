@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { BoardComponent } from './components/board/board.component';
 import { TaskComponent } from './components/task/task.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
 const ROUTES: Routes = [
@@ -11,6 +12,7 @@ const ROUTES: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'board', component: BoardComponent},
   {path: 'task', component: TaskComponent},
+  {path: 'archive', component: ArchiveComponent},
   {path: 'task-detail/:code', component: TaskDetailComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

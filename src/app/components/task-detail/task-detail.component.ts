@@ -27,6 +27,7 @@ export class TaskDetailComponent implements OnInit {
   showPending:boolean = false;
   showInProgress:boolean = false;
   showDone:boolean = false;
+  showArchive:boolean = false;
 
   constructor( private activatedRoute:ActivatedRoute,
                private router:Router,
@@ -36,9 +37,9 @@ export class TaskDetailComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params => {
       
-      this.taskDetailService.getTask( params['code'] ).subscribe( taskO => {
+      this.taskDetailService.getTask( params['code'] ).subscribe( task => {
 
-        this.task = taskO;
+        this.task = task;
 
         switch (this.task.task_state) {
           case 0:
@@ -52,6 +53,7 @@ export class TaskDetailComponent implements OnInit {
           case 2:
             this.showPending = true;
             this.showInProgress = true;
+            this.showArchive = true;
             break;
         }
         
@@ -67,8 +69,7 @@ export class TaskDetailComponent implements OnInit {
 
   changeState( code:number , task_state:number ) {
 
-    this.taskDetailService.changeState( code, task_state ).subscribe( taskO => {
-      console.log(taskO);
+    this.taskDetailService.changeState( code, task_state ).subscribe( task => {
       this.router.navigate(['/board']);
     });
 

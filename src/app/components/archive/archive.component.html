@@ -1,0 +1,65 @@
+<div class="card-columns">
+  <div class="card fadeIn fast" *ngFor="let task of archivedTasks">
+    <div class="card-body">
+      <h5 class="card-title">{{task.name}}</h5>
+      <p class="card-text">{{task.description}}</p>
+      <p class="card-text"><small class="text-muted">{{task.deadline_date}} {{task.deadline_time}}</small></p>
+      <div class="row">
+        <div class="col-sm">
+		  <button (click)="selectTask(task.code)" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#deleteModal">
+			Delete
+		  </button>
+        </div>
+        <div class="col-sm">
+		  <button (click)="selectTask(task.code)" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal">
+			Unarchive
+		  </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- State Change Modal -->
+<div class="modal fade" id="changeStateModal" tabindex="-1" role="dialog" aria-labelledby="changeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeModalLabel">Unarchive Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Select the state of this task.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(this.code, 0)">Pending</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(this.code, 1)">In Progress</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(this.code, 2)">Done</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This action is permanent.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="deleteTask(this.code)">Delete</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

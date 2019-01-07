@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BoardService } from './services/board.service';
 import { TaskService } from './services/task.service';
 import { TaskDetailService } from './services/task-detail.service';
+import { ArchiveService } from './services/archive.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -17,6 +18,7 @@ import { BoardComponent } from './components/board/board.component';
 import { TaskComponent } from './components/task/task.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
     BoardComponent,
     TaskComponent,
     FooterComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
   providers: [
     BoardService,
     TaskService,
-    TaskDetailService
+    TaskDetailService,
+    ArchiveService
   ],
   bootstrap: [AppComponent]
 })

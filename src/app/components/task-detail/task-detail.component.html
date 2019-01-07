@@ -9,6 +9,7 @@
   <hr class="my-4">
   <p class="lead"><b>State:</b> {{ task.task_state }}</p>
   <hr class="my-4">
+
   <div class="row">
 
     <div class="col-sm">
@@ -16,9 +17,6 @@
     </div>
     <div class="col-sm">
       <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Edit Task</button>
-    </div>
-    <div class="col-sm">
-      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Delete Task</button>
     </div>
 
   </div>
@@ -36,12 +34,13 @@
         </button>
       </div>
       <div class="modal-body">
-        Please select the state of this task.
+        Select the state of this task.
       </div>
       <div class="modal-footer">
         <button *ngIf="showPending" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 0)">Pending</button>
         <button *ngIf="showInProgress" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 1)">In Progress</button>
         <button *ngIf="showDone" type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="changeState(task.code, 2)">Done</button>
+        <button *ngIf="showArchive" type="button" class="btn btn-dark" data-dismiss="modal" (click)="changeState(task.code, 3)">Archive Task</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
