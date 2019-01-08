@@ -16,7 +16,7 @@
       <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal" role="button">Change State</button>
     </div>
     <div class="col-sm">
-      <button type="button" class="btn btn-outline-dark btn-block" href="#" role="button" disabled>Edit Task</button>
+      <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#editModal" role="button">Edit Task</button>
     </div>
 
   </div>
@@ -24,11 +24,11 @@
 </div>
 
 <!-- State Change Modal -->
-<div class="modal fade" id="changeStateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="changeStateModal" tabindex="-1" role="dialog" aria-labelledby="changeModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Change State</h5>
+        <h5 class="modal-title" id="changeModalLabel">Change State</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -43,6 +43,79 @@
         <button *ngIf="showArchive" type="button" class="btn btn-dark" data-dismiss="modal" (click)="changeState(task.code, 3)">Archive Task</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+		  <div class="form-group">
+			<label for="name"><h5>Name</h5></label>
+			<input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="task.name" required>
+		  </div>
+
+		  <div class="form-group">
+			<label for="description"><h5>Description</h5></label>
+			<textarea type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="task.description"></textarea>
+		  </div>
+
+
+
+      <h5>Priority</h5>
+      
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" [(ngModel)]="task.urgent" required>
+		<label class="form-check-label" for="noUrgent">
+		  This task is NOT urgent (+0)
+		</label>
+	  </div>
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1" [(ngModel)]="task.urgent">
+		<label class="form-check-label" for="YesUrgent">
+		  This task IS urgent (+1)
+		</label>
+	  </div>
+	  <hr>
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="important" id="noImportant" value="0" [(ngModel)]="task.important" required>
+		<label class="form-check-label" for="noImportant">
+		  This task is NOT important (+0)
+		</label>
+	  </div>
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="important" id="yesImportant" value="2" [(ngModel)]="task.important">
+		<label class="form-check-label" for="yesImportant">
+		  This task IS important (+2)
+		</label>
+	  </div>
+      <br>
+        <div class="form-group">
+		  <label for="date"><h5>Deadline Date</h5></label>
+		  <input class="form-control" type="date" id="date" name="deadline_date" [(ngModel)]="task.deadline_date" required>
+		</div>
+		<div class="form-group">
+		  <label for="time"><h5>Deadline Time</h5></label>
+		  <input class="form-control" type="time" id="time" name="deadline_time" [(ngModel)]="task.deadline_time" required>
+		</div>
+
+       </form>
+      </div>
+      <div class="modal-footer form-group">
+       <button (click)="updateTask(this.task)" type="button" class="btn btn-outline-dark" data-dismiss="modal">Save Changes</button>
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    
     </div>
   </div>
 </div>

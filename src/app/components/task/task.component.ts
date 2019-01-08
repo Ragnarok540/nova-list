@@ -29,8 +29,7 @@ export class TaskComponent implements OnInit {
 
   newTask( form:NgForm ) {
 
-    this.taskService.newTask( form.value as Task ).subscribe( taskO => {
-      console.log(taskO);
+    this.taskService.newTask( form.value as Task ).subscribe( task => {
       this.router.navigate(['/board']);
     });
 

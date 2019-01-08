@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { TaskDetailService } from '../../services/task-detail.service';
 import { Task } from '../../interfaces/task';
 import { Urgency } from '../../enums/urgency.enum';
@@ -70,6 +71,14 @@ export class TaskDetailComponent implements OnInit {
   changeState( code:number , task_state:number ) {
 
     this.taskDetailService.changeState( code, task_state ).subscribe( task => {
+      this.router.navigate(['/board']);
+    });
+
+  }
+
+  updateTask( task : Task ) {
+
+    this.taskDetailService.updateTask( task ).subscribe( task => {
       this.router.navigate(['/board']);
     });
 

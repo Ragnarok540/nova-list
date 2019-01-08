@@ -29,8 +29,31 @@ export class TaskDetailService {
     arr.push( "" + code );
 
     return this.http.patch( this.taskDetailURL, arr, httpOptions ).pipe(
-      tap((task: Task) => console.log("added task")),
-      catchError(this.handleError<Task>('newTask'))
+      tap((task: Task) => console.log("change state of task")),
+      catchError(this.handleError<Task>('changeState'))
+    );
+
+  }
+
+  public updateTask( task:Task ) : Observable<Task> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    let arr:string[] = [];
+
+    arr.push(task.name);
+    arr.push(task.description);
+    arr.push(task.deadline_date);
+    arr.push(task.deadline_time);
+    arr.push(task.urgent);
+    arr.push(task.important);
+    arr.push("" + task.code);
+
+    return this.http.put( this.taskDetailURL, arr, httpOptions ).pipe(
+      tap((task: Task) => console.log("task updated")),
+      catchError(this.handleError<Task>('updateTask'))
     );
 
   }
