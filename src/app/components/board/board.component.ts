@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoardService } from '../../services/board.service';
 import { Task } from '../../interfaces/task';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-board',
@@ -23,7 +24,7 @@ export class BoardComponent implements OnInit {
 
     this.boardService.getPendingTasks().subscribe( tasks => {
 
-      //tasks.sort(function(a, b){return (a.urgent + a.important) - (b.urgent + b.important)});
+      tasks = _.orderBy(tasks, ['deadline_date', 'deadline_time', function(x) { return x.important + x.urgent }], ['asc', 'asc', 'desc'] );
  
       this.pendingTasks = tasks;
     });
