@@ -19,6 +19,7 @@ import { TaskComponent } from './components/task/task.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { OptionsComponent } from './components/options/options.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ArchiveComponent } from './components/archive/archive.component';
     TaskComponent,
     FooterComponent,
     TaskDetailComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,

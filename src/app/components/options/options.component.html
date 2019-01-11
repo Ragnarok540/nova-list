@@ -1,0 +1,21 @@
+<form (ngSubmit)="saveOptions(form)" #form="ngForm" class="fadeIn fast pb-5">
+	<h5>Order of Tasks</h5>
+	<div class="form-group">
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="order" id="orderOne" value="0" [(ngModel)]="order.value" required>
+		<label class="form-check-label" for="orderOne">
+		  Order first by date and time, then by priority.
+		</label>
+	  </div>
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="order" id="orderTwo" value="1" [(ngModel)]="order.value">
+		<label class="form-check-label" for="orderTwo">
+		  Order first by priority, then by date and time.
+		</label>
+	  </div>
+	</div>
+	<hr>
+	<div class="form-group col-sm">
+	  <button [disabled]="!form.valid" type="submit" class="btn btn-outline-dark btn-block">Save Options</button>
+	</div>
+</form>
