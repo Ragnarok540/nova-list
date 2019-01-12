@@ -9,6 +9,7 @@ import { BoardService } from './services/board.service';
 import { TaskService } from './services/task.service';
 import { TaskDetailService } from './services/task-detail.service';
 import { ArchiveService } from './services/archive.service';
+import { OptionsService } from './services/options.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -44,7 +45,8 @@ import { OptionsComponent } from './components/options/options.component';
     BoardService,
     TaskService,
     TaskDetailService,
-    ArchiveService
+    ArchiveService,
+    OptionsService
   ],
   bootstrap: [AppComponent]
 })

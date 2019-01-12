@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { TaskDetailService } from '../../services/task-detail.service';
 import { Task } from '../../interfaces/task';
-import { Urgency } from '../../enums/urgency.enum';
-import { Importance } from '../../enums/importance.enum';
-import { TaskState } from '../../enums/task-state.enum';
+// import { Urgency } from '../../enums/urgency.enum';
+// import { Importance } from '../../enums/importance.enum';
+// import { TaskState } from '../../enums/task-state.enum';
 
 @Component({
   selector: 'app-task-detail',
