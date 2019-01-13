@@ -10,6 +10,7 @@ import { TaskService } from './services/task.service';
 import { TaskDetailService } from './services/task-detail.service';
 import { ArchiveService } from './services/archive.service';
 import { OptionsService } from './services/options.service';
+import { SearchService } from './services/search.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -21,6 +22,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { OptionsComponent } from './components/options/options.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { OptionsComponent } from './components/options/options.component';
     FooterComponent,
     TaskDetailComponent,
     ArchiveComponent,
-    OptionsComponent
+    OptionsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { OptionsComponent } from './components/options/options.component';
     TaskService,
     TaskDetailService,
     ArchiveService,
-    OptionsService
+    OptionsService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

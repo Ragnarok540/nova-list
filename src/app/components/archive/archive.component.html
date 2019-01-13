@@ -11,6 +11,11 @@
 		  </button>
         </div>
         <div class="col-sm">
+		  <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
+		    Details
+		  </a>
+        </div>
+        <div class="col-sm">
 		  <button (click)="selectTask(task.code)" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal">
 			Unarchive
 		  </button>

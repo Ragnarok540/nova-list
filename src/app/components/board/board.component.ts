@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BoardService } from '../../services/board.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
@@ -28,8 +27,7 @@ export class BoardComponent implements OnInit {
   doneTasks:Task[] = [];
 
   constructor( private boardService:BoardService,
-               private optionsService:OptionsService,
-               private router:Router ) { }
+               private optionsService:OptionsService ) { }
 
   ngOnInit() {
 
@@ -58,10 +56,6 @@ export class BoardComponent implements OnInit {
       case '1':
         return _.orderBy(tasks, [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], ['desc', 'asc', 'asc'] );
     }
-  }
-
-  seeTask( code:number ) {
-    this.router.navigate( ['/task-detail', code] );
   }
 
   getPriority( task:Task ) : number {

@@ -18,15 +18,15 @@
 	  <ul class="list-group">
 	  <li class="list-group-item list-group-item-action" *ngFor="let task of pendingTasks" >
 		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">{{task.name}}</h5>
-		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
+		  <h5 class="mb-1">{{ task.name }}</h5>
+		  <small>{{ task.deadline_date }} {{ task.deadline_time }}</small>
 		</div>
-		<p class="mb-1">{{task.description}}</p>
+		<p class="mb-1">{{ task.description | slice:0:50 }}...</p>
 		<small>Priority {{ getPriority(task) }}</small>
 
-        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
         Details
-        </button>
+        </a>
 
 	  </li> 
     </ul>
@@ -40,15 +40,15 @@
 	  <ul class="list-group">
 	  <li class="list-group-item list-group-item-action" *ngFor="let task of inProgressTasks" >
 		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">{{task.name}}</h5>
-		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
+		  <h5 class="mb-1">{{ task.name }}</h5>
+		  <small>{{ task.deadline_date }} {{ task.deadline_time }}</small>
 		</div>
-		<p class="mb-1">{{task.description}}</p>
+		<p class="mb-1">{{task.description  | slice:0:50}}...</p>
 		<small>Priority {{ getPriority(task) }}</small>
 
-        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
         Details
-        </button>
+        </a>
 
 	  </li> 
     </ul>
@@ -62,15 +62,15 @@
 	  <ul class="list-group">
 	  <li class="list-group-item list-group-item-action" *ngFor="let task of doneTasks" >
 		<div class="d-flex w-100 justify-content-between">
-		  <h5 class="mb-1">{{task.name}}</h5>
-		  <small>{{task.deadline_date}} {{task.deadline_time}}</small>
+		  <h5 class="mb-1">{{ task.name }}</h5>
+		  <small>{{ task.deadline_date }} {{ task.deadline_time }}</small>
 		</div>
-		<p class="mb-1">{{task.description}}</p>
+		<p class="mb-1">{{ task.description  | slice:0:50 }}...</p>
 		<small>Priority {{ getPriority(task) }}</small>
 
-        <button (click)="seeTask(task.code)" type="button" class="btn btn-outline-dark btn-block">
+        <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
         Details
-        </button>
+        </a>
 
 	  </li> 
     </ul>

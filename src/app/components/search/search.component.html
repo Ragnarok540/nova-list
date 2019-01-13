@@ -1,0 +1,17 @@
+<div class="card fadeIn fast" *ngFor="let task of tasks">
+  <h5 class="card-header">{{ task.name }}</h5>
+  <div class="card-body">
+    <h5 class="card-title"><b>Fecha:</b> {{ task.deadline_date }}</h5>
+    <h5 class="card-title"><b>Hora:</b> {{ task.deadline_time }}</h5>
+    <h5 class="card-title"><b>Prioridad:</b> {{ getPriority(task) }}</h5>
+    <hr>
+    <p class="card-text">{{ task.description }}</p>
+    <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
+      Details
+    </a>
+  </div>
+</div>
+
+<div class="fadeIn fast" *ngIf="tasks.length == 0">
+  <h5>There are no results for this search term!</h5>
+</div>

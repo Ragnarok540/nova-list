@@ -13,9 +13,12 @@
   <div class="row">
 
     <div class="col-sm">
+      <a [routerLink]="['/board']" class="btn btn-outline-dark btn-block">Board</a>
+    </div>
+    <div class="col-sm" *ngIf="task.task_state != '3'">
       <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal" role="button">Change State</button>
     </div>
-    <div class="col-sm">
+    <div class="col-sm" *ngIf="task.task_state != '3'" >
       <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#editModal" role="button">Edit Task</button>
     </div>
 

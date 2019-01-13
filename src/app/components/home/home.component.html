@@ -8,11 +8,11 @@
 	<div class="row">
 
 	<div class="col-sm">
-	  <button type="button" class="btn btn-outline-dark btn-block" (click)="goTo('board')" role="button">Go to board</button>
+	  <a [routerLink]="['/board']" class="btn btn-outline-dark btn-block">Go to board</a>
 	</div>
 
 	<div class="col-sm">
-	  <button type="button" class="btn btn-outline-dark btn-block" (click)="goTo('task')" role="button">Add new task</button>
+	  <a [routerLink]="['/task']" class="btn btn-outline-dark btn-block">Add new task</a>
 	</div>
 
 	</div>

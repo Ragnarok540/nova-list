@@ -7,6 +7,7 @@ import { TaskComponent } from './components/task/task.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { OptionsComponent } from './components/options/options.component';
+import { SearchComponent } from './components/search/search.component';
 
 const ROUTES: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +17,7 @@ const ROUTES: Routes = [
   {path: 'archive', component: ArchiveComponent},
   {path: 'options', component: OptionsComponent},
   {path: 'task-detail/:code', component: TaskDetailComponent},
+  {path: 'search/:term', component: SearchComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
