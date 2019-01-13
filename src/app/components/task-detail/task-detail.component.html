@@ -59,18 +59,34 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #form="ngForm">
 		  <div class="form-group">
 			<label for="name"><h5>Name</h5></label>
-			<input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="task.name" required>
+			<input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="task.name" required minlength="4" #name="ngModel">
 		  </div>
+
+		<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+		  <div *ngIf="name.errors.required">
+			Name is required.
+		  </div>
+		  <div *ngIf="name.errors.minlength">
+			Name must be at least 4 characters long.
+		  </div>
+		</div>
 
 		  <div class="form-group">
 			<label for="description"><h5>Description</h5></label>
-			<textarea type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="task.description"></textarea>
+			<textarea type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="task.description" required minlength="4" #description="ngModel"></textarea>
 		  </div>
 
-
+		<div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+		  <div *ngIf="description.errors.required">
+			Description is required.
+		  </div>
+		  <div *ngIf="description.errors.minlength">
+			Description must be at least 4 characters long.
+		  </div>
+		</div>
 
       <h5>Priority</h5>
       
@@ -112,7 +128,7 @@
        </form>
       </div>
       <div class="modal-footer form-group">
-       <button (click)="updateTask(this.task)" type="button" class="btn btn-outline-dark" data-dismiss="modal">Save Changes</button>
+       <button (click)="updateTask(this.task)" [disabled]="!form.valid" type="button" class="btn btn-outline-dark" data-dismiss="modal">Save Changes</button>
        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     

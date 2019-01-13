@@ -5,7 +5,6 @@ import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
 import { Options } from '../../interfaces/options';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -18,6 +17,9 @@ export class BoardComponent implements OnInit {
     option_name: 'order',
     option_value: '0'
   }
+
+  //showSuccess:boolean = false;
+  //showDanger:boolean = false;
 
   pendingTasks:Task[] = [];
 
