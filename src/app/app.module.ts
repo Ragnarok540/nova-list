@@ -23,6 +23,7 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
 import { ArchiveComponent } from './components/archive/archive.component';
 import { OptionsComponent } from './components/options/options.component';
 import { SearchComponent } from './components/search/search.component';
+import { TaskItemComponent } from './components/shared/task-item/task-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SearchComponent } from './components/search/search.component';
     TaskDetailComponent,
     ArchiveComponent,
     OptionsComponent,
-    SearchComponent
+    SearchComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,

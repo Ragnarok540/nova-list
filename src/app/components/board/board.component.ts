@@ -58,8 +58,4 @@ export class BoardComponent implements OnInit {
     }
   }
 
-  getPriority( task:Task ) : number {
-    return parseInt(task.urgent) + parseInt(task.important);
-  }
-
 }

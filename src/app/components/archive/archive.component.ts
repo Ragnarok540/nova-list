@@ -68,6 +68,9 @@ export class ArchiveComponent implements OnInit {
         return _.orderBy(tasks, [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], ['desc', 'asc', 'asc'] );
     }
   }
-  
 
+  getPriority( task:Task ) : number {
+    return parseInt(task.urgent) + parseInt(task.important);
+  }
+  
 }
