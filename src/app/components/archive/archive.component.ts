@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ArchiveService } from '../../services/archive.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
@@ -23,7 +22,6 @@ export class ArchiveComponent implements OnInit {
   code : number = 0;
 
   constructor( private archiveService:ArchiveService,
-               private router:Router,
                private optionsService:OptionsService ) { }
 
   ngOnInit() {
@@ -40,14 +38,6 @@ export class ArchiveComponent implements OnInit {
 
   selectTask ( code:number ) {
 	this.code = code;
-  }
-
-  deleteTask( code:number ) {
-
-    this.archiveService.deleteTask( code ).subscribe( task => {
-      this.router.navigate(['/board']);
-    });
-
   }
 
   orderTasks( tasks : Task[], order : string ) : Task[] {
