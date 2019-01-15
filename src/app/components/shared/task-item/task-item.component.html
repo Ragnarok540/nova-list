@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="card-title">{{task.name}}</h5>
     <p class="card-text">{{task.description}}</p>
-    <p class="card-text"><small class="text-muted">Priority {{ getPriority(task) }} | {{task.deadline_date}} {{task.deadline_time}}</small></p>
+    <p class="card-text"><small class="text-muted">Priority {{ getPriority(task) }} | {{task.deadline_date}} {{task.deadline_time}} | State {{ task.task_state }}</small></p>
     <div class="row">
       <div class="col-sm" *ngIf="task.task_state == '3'">
 		<button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#deleteModal">
@@ -22,14 +22,3 @@
     </div>
   </div>
 </div>
-
-<!-- div class="card">
-  <div class="card-body">
-    <h5 class="card-title">{{task.name}}</h5>
-    <p class="card-text">{{task.description}}</p>
-    <p class="card-text"><small class="text-muted">Priority {{ getPriority(task) }} | {{task.deadline_date}} {{task.deadline_time}}</small></p>
-    <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
-	  Details
-    </a>
-  </div>
-</div -->

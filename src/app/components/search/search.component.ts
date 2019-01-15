@@ -21,6 +21,9 @@ export class SearchComponent implements OnInit {
   tasks : Task[] = [];
   tasksTemp : Task[] = [];
 
+  code : number = 0;
+  state : number = 0;
+
   constructor( private searchService:SearchService,
                private activatedRoute:ActivatedRoute,
                private optionsService:OptionsService ) { }
@@ -42,6 +45,10 @@ export class SearchComponent implements OnInit {
 
     });
 
+  }
+
+  selectTask ( code:number ) {
+	this.code = code;
   }
 
   getPriority( task:Task ) : number {

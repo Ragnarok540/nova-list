@@ -1,6 +1,8 @@
 <div class="fadeIn fast">
-  <app-task-item class="fadeIn fast" [task]="task" *ngFor="let task of tasks"></app-task-item>
+  <app-task-item (taskSelected)="selectTask($event)" class="fadeIn fast" [task]="task" *ngFor="let task of tasks"></app-task-item>
 </div>
 <div class="fadeIn fast" *ngIf="tasks.length == 0">
   <h5>There are no results for this search term!</h5>
 </div>
+
+<app-state-change-modal [code]="this.code" [state]="3" ></app-state-change-modal>

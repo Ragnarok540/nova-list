@@ -24,6 +24,9 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { OptionsComponent } from './components/options/options.component';
 import { SearchComponent } from './components/search/search.component';
 import { TaskItemComponent } from './components/shared/task-item/task-item.component';
+import { StateChangeModalComponent } from './components/shared/state-change-modal/state-change-modal.component';
+import { DeleteModalComponent } from './components/shared/delete-modal/delete-modal.component';
+import { EditModalComponent } from './components/shared/edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { TaskItemComponent } from './components/shared/task-item/task-item.compo
     ArchiveComponent,
     OptionsComponent,
     SearchComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    StateChangeModalComponent,
+    DeleteModalComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArchiveService } from '../../services/archive.service';
-import { TaskDetailService } from '../../services/task-detail.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
 import { Options } from '../../interfaces/options';
@@ -19,14 +18,13 @@ export class ArchiveComponent implements OnInit {
     option_value: '0'
   }
 
-  archivedTasks:Task[] = [];
+  archivedTasks : Task[] = [];
 
-  code:number = 0;
+  code : number = 0;
 
   constructor( private archiveService:ArchiveService,
                private router:Router,
-               private optionsService:OptionsService,
-               private taskDetailService:TaskDetailService ) { }
+               private optionsService:OptionsService ) { }
 
   ngOnInit() {
 
@@ -42,14 +40,6 @@ export class ArchiveComponent implements OnInit {
 
   selectTask ( code:number ) {
 	this.code = code;
-  }
-
-  changeState( code:number , task_state:number ) {
-
-    this.taskDetailService.changeState( code, task_state ).subscribe( task => {
-      this.router.navigate(['/board']);
-    });
-
   }
 
   deleteTask( code:number ) {
