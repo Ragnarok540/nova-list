@@ -28,6 +28,9 @@ import { StateChangeModalComponent } from './components/shared/state-change-moda
 import { DeleteModalComponent } from './components/shared/delete-modal/delete-modal.component';
 import { EditModalComponent } from './components/shared/edit-modal/edit-modal.component';
 
+import { PriorityPipe } from './pipes/priority.pipe';
+import { StatePipe } from './pipes/state.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,9 @@ import { EditModalComponent } from './components/shared/edit-modal/edit-modal.co
     TaskItemComponent,
     StateChangeModalComponent,
     DeleteModalComponent,
-    EditModalComponent
+    EditModalComponent,
+    PriorityPipe,
+    StatePipe
   ],
   imports: [
     BrowserModule,

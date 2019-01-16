@@ -33,6 +33,10 @@ export class TaskItemComponent implements OnInit {
     return parseInt(task.urgent) + parseInt(task.important);
   }
 
+  getTime( task: Task ) : Date {
+    return new Date(0, 0, 0, parseInt(task.deadline_time.split(':')[0]), parseInt(task.deadline_time.split(':')[1]), 0, 0);
+  }
+
   selectTask () {
 
     this.taskSelected.emit( this.task.code );

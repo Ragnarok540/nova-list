@@ -43,4 +43,8 @@ export class TaskDetailComponent implements OnInit {
     return parseInt(this.task.urgent) + parseInt(this.task.important);
   }
 
+  getTime( task: Task ) : Date {
+    return new Date(0, 0, 0, parseInt(task.deadline_time.split(':')[0]), parseInt(task.deadline_time.split(':')[1]), 0, 0);
+  }
+
 }
