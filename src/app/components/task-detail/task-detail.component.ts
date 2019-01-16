@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { TaskDetailService } from '../../services/task-detail.service';
 import { Task } from '../../interfaces/task';
 
@@ -42,14 +41,6 @@ export class TaskDetailComponent implements OnInit {
 
   getPriority() : number {
     return parseInt(this.task.urgent) + parseInt(this.task.important);
-  }
-
-  updateTask( task : Task ) {
-
-    this.taskDetailService.updateTask( task ).subscribe( task => {
-      this.router.navigate(['/board']);
-    });
-
   }
 
 }

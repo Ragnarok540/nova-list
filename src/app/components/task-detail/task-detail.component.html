@@ -9,9 +9,7 @@
   <hr class="my-4">
   <p class="lead"><b>State:</b> {{ task.task_state }}</p>
   <hr class="my-4">
-
   <div class="row">
-
     <div class="col-sm">
       <a [routerLink]="['/board']" class="btn btn-outline-dark btn-block">Board</a>
     </div>
@@ -21,98 +19,9 @@
     <div class="col-sm" *ngIf="task.task_state != '3'" >
       <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#editModal" role="button">Edit Task</button>
     </div>
-
   </div>
-
 </div>
 
 <app-state-change-modal [code]="task.code" [state]="task.task_state" ></app-state-change-modal>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Task</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #form="ngForm">
-		  <div class="form-group">
-			<label for="name"><h5>Name</h5></label>
-			<input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="task.name" required minlength="4" #name="ngModel">
-		  </div>
-
-		<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-		  <div *ngIf="name.errors.required">
-			Name is required.
-		  </div>
-		  <div *ngIf="name.errors.minlength">
-			Name must be at least 4 characters long.
-		  </div>
-		</div>
-
-		  <div class="form-group">
-			<label for="description"><h5>Description</h5></label>
-			<textarea type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="task.description" required minlength="4" #description="ngModel"></textarea>
-		  </div>
-
-		<div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-		  <div *ngIf="description.errors.required">
-			Description is required.
-		  </div>
-		  <div *ngIf="description.errors.minlength">
-			Description must be at least 4 characters long.
-		  </div>
-		</div>
-
-      <h5>Priority</h5>
-      
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" [(ngModel)]="task.urgent" required>
-		<label class="form-check-label" for="noUrgent">
-		  This task is NOT urgent (+0)
-		</label>
-	  </div>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1" [(ngModel)]="task.urgent">
-		<label class="form-check-label" for="YesUrgent">
-		  This task IS urgent (+1)
-		</label>
-	  </div>
-	  <hr>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="important" id="noImportant" value="0" [(ngModel)]="task.important" required>
-		<label class="form-check-label" for="noImportant">
-		  This task is NOT important (+0)
-		</label>
-	  </div>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="important" id="yesImportant" value="2" [(ngModel)]="task.important">
-		<label class="form-check-label" for="yesImportant">
-		  This task IS important (+2)
-		</label>
-	  </div>
-      <br>
-        <div class="form-group">
-		  <label for="date"><h5>Deadline Date</h5></label>
-		  <input class="form-control" type="date" id="date" name="deadline_date" [(ngModel)]="task.deadline_date" required>
-		</div>
-		<div class="form-group">
-		  <label for="time"><h5>Deadline Time</h5></label>
-		  <input class="form-control" type="time" id="time" name="deadline_time" [(ngModel)]="task.deadline_time" required>
-		</div>
-
-       </form>
-      </div>
-      <div class="modal-footer form-group">
-       <button (click)="updateTask(this.task)" [disabled]="!form.valid" type="button" class="btn btn-outline-dark" data-dismiss="modal">Save Changes</button>
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
-    
-    </div>
-  </div>
-</div>
+<app-edit-modal [task]="this.task"></app-edit-modal>
