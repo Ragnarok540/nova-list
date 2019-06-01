@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArchiveService } from '../../services/archive.service';
+import { BoardService } from '../../services/board.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
 import { Options } from '../../interfaces/options';
@@ -21,7 +21,7 @@ export class ArchiveComponent implements OnInit {
 
   code : number = 0;
 
-  constructor( private archiveService:ArchiveService,
+  constructor( private boardService:BoardService,
                private optionsService:OptionsService ) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class ArchiveComponent implements OnInit {
       this.order = order;
     });
 
-    this.archiveService.getArchivedTasks().subscribe( tasks => {
+    this.boardService.getArchivedTasks().subscribe( tasks => {
       this.archivedTasks = this.orderTasks( tasks, this.order.option_value );
     });
 

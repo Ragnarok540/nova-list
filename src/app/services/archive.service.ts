@@ -8,13 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ArchiveService {
 
-  archiveURL:string = 'http://localhost:8000/api/archive/';
+  archiveURL:string = 'http://localhost:8000/task/delete/';
 
   constructor( private http:HttpClient ) { }
-
-  public getArchivedTasks() : Observable<Task[]> {
-    return this.http.get<Task[]>(this.archiveURL);
-  }
 
   public deleteTask( code:number ) : Observable<Task[]> {
     return this.http.delete<Task[]>(this.archiveURL + code);

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class BoardService {
 
-  boardURL:string = 'http://localhost:8000/api/board/';
+  boardURL:string = 'http://localhost:8000/task/read-state/';
 
   constructor( private http:HttpClient ) { }
 
@@ -22,6 +22,10 @@ export class BoardService {
 
   public getDoneTasks() : Observable<Task[]> {
     return this.http.get<Task[]>(this.boardURL + '2');
+  }
+  
+  public getArchivedTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>(this.boardURL + '3');
   }
 
 }

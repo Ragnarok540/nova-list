@@ -10,11 +10,14 @@ import { catchError, tap } from 'rxjs/operators';
 export class TaskDetailService {
 
   taskDetailURL:string = "http://localhost:8000/api/task-detail/";
+  taskDetailURL2:string = "http://localhost:8000/task/read/";
+  taskDetailURL3:string = "http://localhost:8000/task/update-state";
+  taskDetailURL4:string = "http://localhost:8000/task/update";
 
   constructor( private http:HttpClient ) { }
 
   public getTask( code:number ): Observable<Task> {
-    return this.http.get<Task>(this.taskDetailURL + code);
+    return this.http.get<Task>(this.taskDetailURL2 + code);
   }
 
   public changeState( code:number , task_state:number ) : Observable<Task> {
@@ -23,12 +26,9 @@ export class TaskDetailService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    let arr:string[] = [];
+    const obj = {"code": code, "task_state": task_state};
 
-    arr.push( "" + task_state );
-    arr.push( "" + code );
-
-    return this.http.patch( this.taskDetailURL, arr, httpOptions ).pipe(
+    return this.http.patch( this.taskDetailURL3, obj, httpOptions ).pipe(
       tap((task: Task) => console.log("change state of task")),
       catchError(this.handleError<Task>('changeState'))
     );
@@ -41,17 +41,7 @@ export class TaskDetailService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    let arr:string[] = [];
-
-    arr.push(task.name);
-    arr.push(task.description);
-    arr.push(task.deadline_date);
-    arr.push(task.deadline_time);
-    arr.push(task.urgent);
-    arr.push(task.important);
-    arr.push("" + task.code);
-
-    return this.http.put( this.taskDetailURL, arr, httpOptions ).pipe(
+    return this.http.put( this.taskDetailURL4, task, httpOptions ).pipe(
       tap((task: Task) => console.log("task updated")),
       catchError(this.handleError<Task>('updateTask'))
     );

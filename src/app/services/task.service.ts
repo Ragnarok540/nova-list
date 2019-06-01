@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 export class TaskService {
 
   taskURL:string = "http://localhost:8000/api/task";
+  createURL:string = "http://localhost:8000/task/create";
 
   constructor( private http:HttpClient ) { }
 
@@ -19,17 +20,7 @@ export class TaskService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    let arr:string[] = [];
-
-    arr.push(task.name);
-    arr.push(task.description);
-    arr.push(task.deadline_date);
-    arr.push(task.deadline_time);
-    arr.push(task.urgent);
-    arr.push(task.important);
-    arr.push("0");
-
-    return this.http.post( this.taskURL, arr, httpOptions ).pipe(
+    return this.http.post( this.createURL, task, httpOptions ).pipe(
       tap((task: Task) => console.log("added task")),
       catchError(this.handleError<Task>('newTask'))
     );
