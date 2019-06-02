@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { TaskService } from './services/task.service';
-import { TaskDetailService } from './services/task-detail.service';
-import { ArchiveService } from './services/archive.service';
 import { OptionsService } from './services/options.service';
 
 import { AppComponent } from './app.component';
@@ -28,6 +26,7 @@ import { EditModalComponent } from './components/shared/edit-modal/edit-modal.co
 
 import { PriorityPipe } from './pipes/priority.pipe';
 import { StatePipe } from './pipes/state.pipe';
+import { OcticonDirective } from './directives/octicon.directive';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,8 @@ import { StatePipe } from './pipes/state.pipe';
     DeleteModalComponent,
     EditModalComponent,
     PriorityPipe,
-    StatePipe
+    StatePipe,
+    OcticonDirective
   ],
   imports: [
     BrowserModule,
@@ -57,8 +57,6 @@ import { StatePipe } from './pipes/state.pipe';
   ],
   providers: [
     TaskService,
-    TaskDetailService,
-    ArchiveService,
     OptionsService
   ],
   bootstrap: [AppComponent]

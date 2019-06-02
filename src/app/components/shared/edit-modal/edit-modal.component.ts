@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { TaskDetailService } from '../../../services/task-detail.service';
+import { TaskService } from '../../../services/task.service';
 import { Task } from '../../../interfaces/task';
 
 @Component({
@@ -11,25 +11,25 @@ import { Task } from '../../../interfaces/task';
 export class EditModalComponent implements OnInit {
 
   @Input() task:Task = { 
-	code: null,
-	name: null,
-	description: null,
-	deadline_date: null,
-	deadline_time: null,
-	urgent: null,
-	important: null,
-	task_state: null
+    code: null,
+    name: null,
+    description: null,
+    deadline_date: null,
+    deadline_time: null,
+    urgent: null,
+    important: null,
+    task_state: null
   }
 
   constructor( private router:Router,
-               private taskDetailService:TaskDetailService ) { }
+               private taskService:TaskService ) { }
 
   ngOnInit() {
   }
 
   updateTask( task : Task ) {
 
-    this.taskDetailService.updateTask( task ).subscribe( task => {
+    this.taskService.updateTask( task ).subscribe( task => {
       this.router.navigate(['/board']);
     });
 

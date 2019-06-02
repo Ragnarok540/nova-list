@@ -6,27 +6,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['home']">Home</a>
+        <a class="nav-link" [routerLink]="['home']"><span octicon="globe"></span> Home</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['board']">Board</a>
+        <a class="nav-link" [routerLink]="['board']"><span octicon="tasklist"></span> Board</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['task']">New Task</a>
+        <a class="nav-link" [routerLink]="['task']"><span octicon="plus"></span> New Task</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['archive']">Archive</a>
+        <a class="nav-link" [routerLink]="['archive']"><span octicon="file-directory"></span> Archive</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['options']">Options</a>
+        <a class="nav-link" [routerLink]="['options']"><span octicon="gear"></span> Options</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['about']">About</a>
+        <a class="nav-link" [routerLink]="['about']"><span octicon="info"></span> About</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup.enter)="searchTasks(search.value)" #search>
-      <button (click)="searchTasks(search.value)"  class="btn btn-outline-light my-2 my-sm-0" type="button">Search</button>
+      <button (click)="searchTasks(search.value)"  class="btn btn-outline-light my-2 my-sm-0" type="button"><span octicon="search"></span> Search</button>
     </form>
   </div>
 </nav>

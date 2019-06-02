@@ -5,19 +5,19 @@
     <p class="card-text"><small class="text-muted">{{ getPriority(task) | priority }} | {{task.deadline_date | date:'d MMM y'}} | {{ getTime(task) | date:'h:mm a'}} | {{ task.task_state | state }}</small></p>
     <div class="row">
       <div class="col-sm" *ngIf="task.task_state == '3'">
-		<button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#deleteModal">
-		  Delete
-		</button>
+        <button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#deleteModal">
+          <span octicon="flame"></span> Delete
+        </button>
         </div>
         <div class="col-sm">
-		<a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
-		  Details
-		</a>
+        <a [routerLink]="['/task-detail', task.code]" class="btn btn-outline-dark btn-block">
+          <span octicon="file"></span> Details
+        </a>
         </div>
         <div class="col-sm" *ngIf="task.task_state == '3'">
-	    <button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal">
-	      Unarchive
-	    </button>
+        <button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#changeStateModal">
+          <span octicon="reply"></span> Unarchive
+        </button>
       </div>
     </div>
   </div>

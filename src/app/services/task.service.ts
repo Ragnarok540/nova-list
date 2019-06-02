@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { ErrorService } from './error.service';
 import { Task } from '../interfaces/task';
@@ -45,6 +45,29 @@ export class TaskService {
 
   public getTasks() : Observable<Task[]> {
     return this.http.get<Task[]>( `${this.env.api_url}/task/read-all` );
+  }
+
+  public getTask( code:number ): Observable<Task> {
+    return this.http.get<Task>( `${this.env.api_url}/task/read/${code}` );
+  }
+
+  public changeState( code:number , task_state:number ) : Observable<Task> {
+    const obj = {"code": code, "task_state": task_state};
+    return this.http.patch( `${this.env.api_url}/task/update-state`, obj, this.httpOptions ).pipe(
+      tap((task: Task) => console.log("change state of task")),
+      catchError(this.error.handleError<Task>('changeState'))
+    );
+  }
+
+  public updateTask( task:Task ) : Observable<Task> {
+    return this.http.put( `${this.env.api_url}/task/update`, task, this.httpOptions ).pipe(
+      tap((task: Task) => console.log("task updated")),
+      catchError(this.error.handleError<Task>('updateTask'))
+    );
+  }
+
+  public deleteTask( code:number ) : Observable<Task[]> {
+    return this.http.delete<Task[]>( `${this.env.api_url}/task/delete/${code}` );
   }
 
 }

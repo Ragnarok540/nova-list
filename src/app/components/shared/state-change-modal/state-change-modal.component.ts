@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { TaskDetailService } from '../../../services/task-detail.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-state-change-modal',
@@ -13,17 +13,15 @@ export class StateChangeModalComponent implements OnInit {
   @Input() state : number;
 
   constructor( private router:Router,
-               private taskDetailService:TaskDetailService ) { }
+               private taskService:TaskService ) { }
 
   ngOnInit() {
   }
 
   changeState( code:number , task_state:number ) {
-
-    this.taskDetailService.changeState( code, task_state ).subscribe( task => {
+    this.taskService.changeState( code, task_state ).subscribe( task => {
       this.router.navigate(['/board']);
     });
-
   }
 
 }

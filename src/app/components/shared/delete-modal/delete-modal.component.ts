@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ArchiveService } from '../../../services/archive.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'app-delete-modal',
@@ -12,14 +12,14 @@ export class DeleteModalComponent implements OnInit {
   @Input() code : number;
 
   constructor( private router:Router,
-               private archiveService:ArchiveService ) { }
+               private taskService:TaskService ) { }
 
   ngOnInit() {
   }
 
   deleteTask( code:number ) {
 
-    this.archiveService.deleteTask( code ).subscribe( task => {
+    this.taskService.deleteTask( code ).subscribe( task => {
       this.router.navigate(['/board']);
     });
 

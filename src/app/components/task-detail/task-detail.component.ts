@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TaskDetailService } from '../../services/task-detail.service';
+import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
 
 @Component({
@@ -11,32 +11,26 @@ import { Task } from '../../interfaces/task';
 export class TaskDetailComponent implements OnInit {
 
   task:Task = { 
-	code: null,
-	name: null,
-	description: null,
-	deadline_date: null,
-	deadline_time: null,
-	urgent: null,
-	important: null,
-	task_state: null
+    code: null,
+    name: null,
+    description: null,
+    deadline_date: null,
+    deadline_time: null,
+    urgent: null,
+    important: null,
+    task_state: null
   }
 
   constructor( private activatedRoute:ActivatedRoute,
                private router:Router,
-               private taskDetailService:TaskDetailService ) { }
+               private taskService:TaskService ) { }
 
   ngOnInit() {
-
     this.activatedRoute.params.subscribe( params => {
-      
-      this.taskDetailService.getTask( params['code'] ).subscribe( task => {
-
+      this.taskService.getTask( params['code'] ).subscribe( task => {
         this.task = task;
-
       });
-
     });
-
   }
 
   getPriority() : number {

@@ -2,30 +2,26 @@
   <div class="form-group">
     <label for="name"><h5>Name</h5></label>
     <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="task.name" required minlength="4" #name="ngModel">
-
-		<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-		  <div *ngIf="name.errors.required">
-			Name is required.
-		  </div>
-		  <div *ngIf="name.errors.minlength">
-			Name must be at least 4 characters long.
-		  </div>
-		</div>
-
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="description"><h5>Description</h5></label>
     <textarea type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="task.description" required minlength="4" #description="ngModel"></textarea>
-
-		<div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
-		  <div *ngIf="description.errors.required">
-			Description is required.
-		  </div>
-		  <div *ngIf="description.errors.minlength">
-			Description must be at least 4 characters long.
-		  </div>
-		</div>
-
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+          <div *ngIf="description.errors.required">
+            Description is required.
+          </div>
+          <div *ngIf="description.errors.minlength">
+            Description must be at least 4 characters long.
+          </div>
+        </div>
   </div>
   <h5>Priority</h5>
   <div class="container-fluid border rounded p-2">
@@ -33,55 +29,53 @@
 
       <div class="form-group col-sm-4">
       <br>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" [(ngModel)]="task.urgent" required>
-		<label class="form-check-label" for="noUrgent">
-		  This task is NOT urgent (+0)
-		</label>
-	  </div>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1" [(ngModel)]="task.urgent">
-		<label class="form-check-label" for="YesUrgent">
-		  This task IS urgent (+1)
-		</label>
-	  </div>
-	  <hr>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="important" id="noImportant" value="0" [(ngModel)]="task.important" required>
-		<label class="form-check-label" for="noImportant">
-		  This task is NOT important (+0)
-		</label>
-	  </div>
-	  <div class="form-check">
-		<input class="form-check-input" type="radio" name="important" id="yesImportant" value="2" [(ngModel)]="task.important">
-		<label class="form-check-label" for="yesImportant">
-		  This task IS important (+2)
-		</label>
-	  </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="urgent" id="noUrgent" value="0" [(ngModel)]="task.urgent" required>
+        <label class="form-check-label" for="noUrgent">
+          This task is NOT urgent (+0)
+        </label>
       </div>
-
-<div class="form-group col-sm-8">
-<div class="card card-body bg-light">
-<p><b>Urgent:</b> Requiring immediate attention. (Crises, problems, interruptions, meetings, calls, emails...)</p>
-<p><b>Important:</b> Having relevant and crucial value. (Crises, problems, planning, study, excercise, recreation...)</p>
-</div>
-</div>
-</div>
-
-</div>
-<div class="form-row p-2">
-<div class="form-group col-sm">
-  <label for="date"><h5>Deadline Date</h5></label>
-  <input class="form-control" type="date" id="date" name="deadline_date" [(ngModel)]="task.deadline_date" required>
-</div>
-<div class="form-group col-sm">
-  <label for="time"><h5>Deadline Time</h5></label>
-  <input class="form-control" type="time" id="time" name="deadline_time" [(ngModel)]="task.deadline_time" required>
-</div>
-</div>
-<div class="form-row">
-<div class="form-group col-sm">
-<button [disabled]="!form.valid" type="submit" class="btn btn-outline-dark btn-block">Add New Task</button>
-</div>
-</div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="urgent" id="YesUrgent" value="1" [(ngModel)]="task.urgent">
+        <label class="form-check-label" for="YesUrgent">
+          This task IS urgent (+1)
+        </label>
+      </div>
+      <hr>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="important" id="noImportant" value="0" [(ngModel)]="task.important" required>
+        <label class="form-check-label" for="noImportant">
+          This task is NOT important (+0)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="important" id="yesImportant" value="2" [(ngModel)]="task.important">
+        <label class="form-check-label" for="yesImportant">
+          This task IS important (+2)
+        </label>
+      </div>
+      </div>
+      <div class="form-group col-sm-8">
+        <div class="card card-body bg-light">
+          <p><b>Urgent:</b> Requiring immediate attention. (Crises, problems, interruptions, meetings, calls, emails...)</p>
+          <p><b>Important:</b> Having relevant and crucial value. (Crises, problems, planning, study, excercise, recreation...)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row p-2">
+    <div class="form-group col-sm">
+      <label for="date"><h5>Deadline Date</h5></label>
+      <input class="form-control" type="date" id="date" name="deadline_date" [(ngModel)]="task.deadline_date" required>
+    </div>
+    <div class="form-group col-sm">
+      <label for="time"><h5>Deadline Time</h5></label>
+      <input class="form-control" type="time" id="time" name="deadline_time" [(ngModel)]="task.deadline_time" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm">
+      <button [disabled]="!form.valid" type="submit" class="btn btn-outline-dark btn-block"><span octicon="plus"></span> Add New Task</button>
+    </div>
+  </div>
 </form>
