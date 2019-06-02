@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { TaskService } from '../../services/task.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
 import { Options } from '../../interfaces/options';
@@ -17,16 +17,13 @@ export class BoardComponent implements OnInit {
     option_value: '0'
   }
 
-  //showSuccess:boolean = false;
-  //showDanger:boolean = false;
-
   pendingTasks:Task[] = [];
 
   inProgressTasks:Task[] = [];
 
   doneTasks:Task[] = [];
 
-  constructor( private boardService:BoardService,
+  constructor( private taskService:TaskService,
                private optionsService:OptionsService ) { }
 
   ngOnInit() {
@@ -35,15 +32,15 @@ export class BoardComponent implements OnInit {
       this.order = order;
     });
 
-    this.boardService.getPendingTasks().subscribe( tasks => {
+    this.taskService.getPendingTasks().subscribe( tasks => {
       this.pendingTasks = this.orderTasks( tasks, this.order.option_value );
     });
 
-    this.boardService.getInProgressTasks().subscribe( tasks => {
+    this.taskService.getInProgressTasks().subscribe( tasks => {
       this.inProgressTasks = this.orderTasks( tasks, this.order.option_value );
     });
 
-    this.boardService.getDoneTasks().subscribe( tasks => {
+    this.taskService.getDoneTasks().subscribe( tasks => {
       this.doneTasks = this.orderTasks( tasks, this.order.option_value );
     });
 
@@ -52,9 +49,13 @@ export class BoardComponent implements OnInit {
   orderTasks( tasks : Task[], order : string ) : Task[] {
     switch (order) {
       case '0':
-        return _.orderBy(tasks, ['deadline_date', 'deadline_time', function(x) { return x.important + x.urgent }], ['asc', 'asc', 'desc'] );
+        return _.orderBy(tasks, 
+                         ['deadline_date', 'deadline_time', function(x) { return x.important + x.urgent }], 
+                         ['asc', 'asc', 'desc'] );
       case '1':
-        return _.orderBy(tasks, [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], ['desc', 'asc', 'asc'] );
+        return _.orderBy(tasks, 
+                         [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], 
+                         ['desc', 'asc', 'asc'] );
     }
   }
 

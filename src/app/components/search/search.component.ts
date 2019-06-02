@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../../services/search.service';
+import { TaskService } from '../../services/task.service';
 import { OptionsService } from '../../services/options.service';
 import { Task } from '../../interfaces/task';
 import { Options } from '../../interfaces/options';
@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   code : number = 0;
   state : number = 0;
 
-  constructor( private searchService:SearchService,
+  constructor( private taskService:TaskService,
                private activatedRoute:ActivatedRoute,
                private optionsService:OptionsService ) { }
 
@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
 
     this.activatedRoute.params.subscribe( params => {
 
-      this.searchService.getTasks().subscribe( tasks => {
+      this.taskService.getTasks().subscribe( tasks => {
         this.tasksTemp = _.filter(tasks, function(x) { 
           return x.name.toLowerCase().includes(params['term']) || x.description.toLowerCase().includes(params['term']);
         });
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
   }
 
   selectTask ( code:number ) {
-	this.code = code;
+    this.code = code;
   }
 
   getPriority( task:Task ) : number {
@@ -58,9 +58,13 @@ export class SearchComponent implements OnInit {
   orderTasks( tasks : Task[], order : string ) : Task[] {
     switch (order) {
       case '0':
-        return _.orderBy(tasks, ['deadline_date', 'deadline_time', function(x) { return x.important + x.urgent }], ['asc', 'asc', 'desc'] );
+        return _.orderBy(tasks, 
+                         ['deadline_date', 'deadline_time', function(x) { return x.important + x.urgent }], 
+                         ['asc', 'asc', 'desc'] );
       case '1':
-        return _.orderBy(tasks, [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], ['desc', 'asc', 'asc'] );
+        return _.orderBy(tasks,
+                         [function(x) { return x.important + x.urgent }, 'deadline_date', 'deadline_time'], 
+                         ['desc', 'asc', 'asc'] );
     }
   }
 

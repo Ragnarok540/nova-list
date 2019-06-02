@@ -10,7 +10,8 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class OptionsService {
 
-  optionsURL:string = "http://localhost:8000/api/options/";
+  optionsURL:string = "http://localhost:8000/option/read/";
+  optionsURL2:string = "http://localhost:8000/option/update-value";
 
   constructor( private http:HttpClient ) { }
 
@@ -23,13 +24,13 @@ export class OptionsService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-
+/*
     let arr:string[] = [];
 
     arr.push(option.option_value);
     arr.push(option.option_name);
-
-    return this.http.patch( this.optionsURL, arr, httpOptions ).pipe(
+*/
+    return this.http.patch( this.optionsURL2, option, httpOptions ).pipe(
       tap(( option:Options ) => console.log("option updated")),
       catchError(this.handleError<Options>('updateOption'))
     );

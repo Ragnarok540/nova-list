@@ -1,16 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { BoardService } from './services/board.service';
 import { TaskService } from './services/task.service';
 import { TaskDetailService } from './services/task-detail.service';
 import { ArchiveService } from './services/archive.service';
 import { OptionsService } from './services/options.service';
-import { SearchService } from './services/search.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -58,12 +56,10 @@ import { StatePipe } from './pipes/state.pipe';
     HttpClientModule
   ],
   providers: [
-    BoardService,
     TaskService,
     TaskDetailService,
     ArchiveService,
-    OptionsService,
-    SearchService
+    OptionsService
   ],
   bootstrap: [AppComponent]
 })

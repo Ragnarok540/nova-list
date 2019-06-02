@@ -1,51 +1,50 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Task } from '../interfaces/task';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { ErrorService } from './error.service';
+import { Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskURL:string = "http://localhost:8000/api/task";
-  createURL:string = "http://localhost:8000/task/create";
+  env = environment;
 
-  constructor( private http:HttpClient ) { }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor( private http:HttpClient,
+               private error:ErrorService  ) { }
 
   public newTask( task:Task ) : Observable<Task> {
-
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-
-    return this.http.post( this.createURL, task, httpOptions ).pipe(
+    return this.http.post( `${this.env.api_url}/task/create`, task, this.httpOptions ).pipe(
       tap((task: Task) => console.log("added task")),
-      catchError(this.handleError<Task>('newTask'))
+      catchError(this.error.handleError<Task>('newTask'))
     );
-
   }
 
-	/**
-     * 
-	 * Handle Http operation that failed.
-	 * Let the app continue.
-	 * @param operation - name of the operation that failed
-	 * @param result - optional value to return as the observable result
-	 */
-	private handleError<T> (operation = 'operation', result?: T) {
-	  return (error: any): Observable<T> => {
-	 
-		// TODO: send the error to remote logging infrastructure
-		console.error(error); // log to console instead
-	 
-		// TODO: better job of transforming error for user consumption
-		//this.log(`${operation} failed: ${error.message}`);
-	 
-		// Let the app keep running by returning an empty result.
-		return of(result as T);
-	  };
-	}
+  public getPendingTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>( `${this.env.api_url}/task/read-state/0` );
+  }
+
+  public getInProgressTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>( `${this.env.api_url}/task/read-state/1` );
+  }
+
+  public getDoneTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>( `${this.env.api_url}/task/read-state/2` );
+  }
+
+  public getArchivedTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>( `${this.env.api_url}/task/read-state/3` );
+  }
+
+  public getTasks() : Observable<Task[]> {
+    return this.http.get<Task[]>( `${this.env.api_url}/task/read-all` );
+  }
 
 }
