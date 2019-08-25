@@ -26,7 +26,9 @@ import { EditModalComponent } from './components/shared/edit-modal/edit-modal.co
 
 import { PriorityPipe } from './pipes/priority.pipe';
 import { StatePipe } from './pipes/state.pipe';
+
 import { OcticonDirective } from './directives/octicon.directive';
+import { UnitPipe } from './pipes/unit.pipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { OcticonDirective } from './directives/octicon.directive';
     EditModalComponent,
     PriorityPipe,
     StatePipe,
-    OcticonDirective
+    OcticonDirective,
+    UnitPipe
   ],
   imports: [
     BrowserModule,

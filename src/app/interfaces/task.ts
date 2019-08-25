@@ -6,5 +6,7 @@ export interface Task {
   deadline_time: string,
   urgent: string,
   important: string,
-  task_state: number
+  task_state: number,
+  estimate: number,
+  unit: number
 }

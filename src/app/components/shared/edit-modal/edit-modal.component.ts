@@ -18,7 +18,9 @@ export class EditModalComponent implements OnInit {
     deadline_time: null,
     urgent: null,
     important: null,
-    task_state: null
+    task_state: null,
+    estimate: null,
+    unit: null
   }
 
   constructor( private router:Router,

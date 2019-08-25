@@ -2,7 +2,8 @@
   <div class="card-body">
     <h5 class="card-title">{{task.name}}</h5>
     <p class="card-text">{{task.description}}</p>
-    <p class="card-text"><small class="text-muted">{{ getPriority(task) | priority }} | {{task.deadline_date | date:'d MMM y'}} | {{ getTime(task) | date:'h:mm a'}} | {{ task.task_state | state }}</small></p>
+    <p class="card-text"><small class="text-muted">{{ getPriority(task) | priority }} | {{task.deadline_date | date:'d MMM y'}} | {{ getTime(task) | date:'h:mm a'}}</small></p>
+    <p class="card-text"><small class="text-muted">{{ task.task_state | state }} | {{ task.estimate }} {{ task.unit | unit }}</small></p>
     <div class="row">
       <div class="col-sm" *ngIf="task.task_state == '3'">
         <button (click)="selectTask()" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#deleteModal">

@@ -9,14 +9,16 @@ import { Task } from '../../../interfaces/task';
 export class TaskItemComponent implements OnInit {
 
   @Input() task:Task = { 
-	code: null,
-	name: null,
-	description: null,
-	deadline_date: null,
-	deadline_time: null,
-	urgent: null,
-	important: null,
-	task_state: null
+    code: null,
+    name: null,
+    description: null,
+    deadline_date: null,
+    deadline_time: null,
+    urgent: null,
+    important: null,
+    task_state: null,
+    estimate: null,
+    unit: null
   }
 
   @Output() taskSelected : EventEmitter<number>;
@@ -26,7 +28,6 @@ export class TaskItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
   getPriority( task:Task ) : number {
@@ -38,9 +39,7 @@ export class TaskItemComponent implements OnInit {
   }
 
   selectTask () {
-
     this.taskSelected.emit( this.task.code );
-
   }
 
 }
