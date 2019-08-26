@@ -15,7 +15,7 @@
           </div>
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
             <div *ngIf="name.errors.required">
-            Name is required.
+              Name is required.
             </div>
             <div *ngIf="name.errors.minlength">
               Name must be at least 4 characters long.
@@ -60,6 +60,18 @@
             </label>
           </div>
           <br>
+          <div class="form-group">
+            <label for="unitSelect"><h5>Unit</h5></label>
+            <select class="form-control" id="unitSelect" name="unit" [(ngModel)]="task.unit" #unit="ngModel" (change)="unitSelected(this.task.unit)">
+              <option [value]="u" *ngFor="let u of units" >{{ u | unit }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="estimateSelect"><h5>Estimate</h5></label>
+            <select class="form-control" id="estimateSelect" name="estimate" [(ngModel)]="task.estimate" #estimate="ngModel">
+              <option [value]="fib" *ngFor="let fib of fibonacci" >{{fib}}</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="date"><h5>Deadline Date</h5></label>
             <input class="form-control" type="date" id="date" name="deadline_date" [(ngModel)]="task.deadline_date" required>

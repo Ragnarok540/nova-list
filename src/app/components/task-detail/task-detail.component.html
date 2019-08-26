@@ -3,11 +3,13 @@
   <hr class="my-4">
   <h1 class="lead"><b>Description:</b> {{ task.description }}</h1>
   <hr class="my-4">
-  <p class="lead"><b>Deadline Date & Time:</b> {{ task.deadline_date | date:'EEEE, d MMMM y' }}, {{ getTime(task) | date:'h:mm a'}}</p>
+  <p class="lead"><b>Deadline:</b> {{ task.deadline_date | date:'EEEE, d MMMM y' }}, {{ getTime(task) | date:'h:mm a'}}</p>
   <hr class="my-4">
   <p class="lead"><b>Priority:</b> {{ getPriority() | priority }}</p>
   <hr class="my-4">
   <p class="lead"><b>State:</b> {{ task.task_state | state }}</p>
+  <hr class="my-4">
+  <p class="lead"><b>Estimate:</b> {{ task.estimate }} {{ task.unit | unit }}</p>
   <hr class="my-4">
   <div class="row">
     <div class="col-sm">

@@ -23,11 +23,13 @@ export class EditModalComponent implements OnInit {
     unit: null
   }
 
+  fibonacci = [0, 1, 2, 3, 5, 8, 13, 21, 34];
+  units = [0, 1, 2, 3, 4];
+
   constructor( private router:Router,
                private taskService:TaskService ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   updateTask( task : Task ) {
 
@@ -35,6 +37,22 @@ export class EditModalComponent implements OnInit {
       this.router.navigate(['/board']);
     });
 
+  }
+
+  unitSelected(unit) {
+    switch (unit) {
+      case "0": this.fibonacci = [0, 1, 2, 3, 5, 8, 13, 21, 34];
+        break;
+      case "1": this.fibonacci = [0, 1, 2, 3, 5, 8];
+        break;
+      case "2": this.fibonacci = [0, 1, 2, 3, 5];
+        break;
+      case "3": this.fibonacci = [0, 1, 2, 3];
+        break;
+      case "4": this.fibonacci = [0, 1];
+        break;
+    }
+    this.task.estimate = 0;
   }
 
 }

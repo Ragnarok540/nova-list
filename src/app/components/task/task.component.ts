@@ -41,7 +41,6 @@ export class TaskComponent implements OnInit {
   }
 
   unitSelected(unit) {
-    console.log(unit);
     switch (unit) {
       case "0": this.fibonacci = [0, 1, 2, 3, 5, 8, 13, 21, 34];
         break;
